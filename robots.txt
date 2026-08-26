@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eyuelfikadu.vercel.app/sitemap.xml
