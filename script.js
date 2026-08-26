@@ -56,3 +56,53 @@ if (savedTheme === "dark") {
     document.body.classList.add("dark-mode");
     themeToggle.textContent = "☀️";
 }
+// ========================================
+// ENGLISH / AMHARIC LANGUAGE
+// ========================================
+
+const languageToggle = document.getElementById("languageToggle");
+
+let currentLanguage = localStorage.getItem("language") || "en";
+
+function changeLanguage(language) {
+
+    const elements = document.querySelectorAll("[data-en][data-am]");
+
+    elements.forEach(function(element) {
+
+        if (language === "am") {
+            element.textContent = element.getAttribute("data-am");
+        } else {
+            element.textContent = element.getAttribute("data-en");
+        }
+
+    });
+
+    currentLanguage = language;
+
+    localStorage.setItem("language", language);
+
+    if (language === "am") {
+        languageToggle.textContent = "EN";
+    } else {
+        languageToggle.textContent = "አማ";
+    }
+}
+
+
+// Language button
+
+languageToggle.addEventListener("click", function() {
+
+    if (currentLanguage === "en") {
+        changeLanguage("am");
+    } else {
+        changeLanguage("en");
+    }
+
+});
+
+
+// Load saved language
+
+changeLanguage(currentLanguage);
